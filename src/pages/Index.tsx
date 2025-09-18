@@ -4,61 +4,78 @@ import HeroCarousel from "@/components/HeroCarousel";
 import ProductCard from "@/components/ProductCard";
 import OrderModal from "@/components/OrderModal";
 import Footer from "@/components/Footer";
-import product1 from "@/assets/product1.jpg";
-import product2 from "@/assets/product2.jpg";
-import product3 from "@/assets/product3.jpg";
-import product4 from "@/assets/product4.jpg";
+import stockBrick from "@/assets/stock-brick.jpg";
+import interlockPaver from "@/assets/interlock-paver.jpg";
+import maxiBrick from "@/assets/maxi-brick.jpg";
+import hollowBrick from "@/assets/hollow-brick.jpg";
+import truck1 from "@/assets/truck1.jpg";
+import truck2 from "@/assets/truck2.jpg";
+import mapImage from "@/assets/south-africa-map.jpg";
 
 const products = [
   {
     id: 1,
-    title: "Premium Red Clay Bricks",
-    shortDescription: "High-quality red clay bricks perfect for residential construction.",
-    fullDescription: "Our premium red clay bricks are manufactured using traditional methods combined with modern quality control. These bricks offer excellent thermal insulation, durability, and aesthetic appeal. Perfect for residential and commercial construction projects. Each brick is carefully crafted to ensure consistent size, strength, and color. Suitable for load-bearing walls, decorative facades, and landscape applications.",
-    image: product1,
-    price: "$0.45",
-    unit: "per brick",
+    title: "Stock Bricks",
+    shortDescription: "High-quality grey stock bricks perfect for general construction.",
+    fullDescription: "Our stock bricks are manufactured using premium materials and traditional methods. These versatile grey bricks offer excellent durability and strength, making them ideal for all types of construction projects. Perfect for residential and commercial buildings, load-bearing walls, and structural applications. Each brick meets industry standards for consistency and quality.",
+    image: stockBrick,
   },
   {
     id: 2,
-    title: "Industrial Concrete Blocks",
-    shortDescription: "Heavy-duty concrete blocks designed for industrial applications.",
-    fullDescription: "Our industrial concrete blocks are engineered for maximum strength and durability. Made with high-grade concrete and reinforced with steel fibers, these blocks can withstand extreme conditions and heavy loads. Ideal for commercial buildings, warehouses, retaining walls, and infrastructure projects. Features excellent fire resistance, weatherproofing, and sound insulation properties.",
-    image: product2,
-    price: "$2.85",
-    unit: "per block",
+    title: "Interlock Paver Brick",
+    shortDescription: "Durable interlocking pavers for driveways and walkways.",
+    fullDescription: "Our interlock paver bricks are designed for superior performance in high-traffic areas. These interlocking concrete pavers provide excellent drainage, easy installation, and long-lasting durability. Perfect for driveways, walkways, patios, and commercial applications. The unique interlocking design ensures stability and allows for easy replacement if needed.",
+    image: interlockPaver,
   },
   {
     id: 3,
-    title: "Fire-Resistant Refractory Bricks",
-    shortDescription: "Specialized bricks for high-temperature applications and furnaces.",
-    fullDescription: "Our fire-resistant refractory bricks are specially formulated to withstand temperatures up to 1800°C. Made from high-alumina clay and other refractory materials, these bricks are essential for furnaces, kilns, fireplaces, and industrial heating applications. They maintain structural integrity under extreme thermal stress and provide excellent thermal shock resistance.",
-    image: product3,
-    price: "$4.25",
-    unit: "per brick",
+    title: "Maxi Bricks",
+    shortDescription: "Large format paving bricks available in 60mm and 80mm sizes.",
+    fullDescription: "Our maxi bricks, also known as paving bricks, are available in two convenient sizes: 60mm and 80mm thickness. These larger format bricks are perfect for paving applications, offering superior coverage and reduced installation time. Made with high-quality concrete, they provide excellent strength and weather resistance. Ideal for driveways, parking areas, and heavy-duty paving projects.",
+    image: maxiBrick,
+    sizes: ["60mm", "80mm"],
   },
   {
     id: 4,
-    title: "Decorative Facing Bricks",
-    shortDescription: "Beautiful decorative bricks for architectural facades and design.",
-    fullDescription: "Our decorative facing bricks combine functionality with aesthetic excellence. Available in various colors, textures, and finishes, these bricks are perfect for creating stunning architectural features. Each brick is meticulously crafted to provide consistent appearance while maintaining structural integrity. Ideal for facades, accent walls, garden features, and premium residential projects.",
-    image: product4,
-    price: "$1.95",
-    unit: "per brick",
+    title: "Hollow Bricks",
+    shortDescription: "Lightweight hollow bricks for efficient construction.",
+    fullDescription: "Our hollow bricks are engineered to provide excellent thermal insulation while reducing overall weight. These innovative bricks feature hollow cores that improve insulation properties and reduce material costs. Perfect for partition walls, non-load bearing applications, and energy-efficient construction. The hollow design also allows for easy installation of utilities and reduces construction time.",
+    image: hollowBrick,
   },
+];
+
+const deliveryImages = [
+  {
+    id: 1,
+    image: truck1,
+    caption: "Professional Delivery Service",
+    slogan: "Building Dreams, One Brick at a Time"
+  },
+  {
+    id: 2,
+    image: truck2,
+    caption: "Reliable Transportation",
+    slogan: "Quality Bricks, Quality Service"
+  },
+  {
+    id: 3,
+    image: mapImage,
+    caption: "Nationwide Coverage",
+    slogan: "We Deliver Everywhere in South Africa"
+  }
 ];
 
 const Index = () => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
-  const handleOrderNow = (productTitle: string) => {
+  const handleGetQuote = (productTitle: string) => {
     setSelectedProduct(productTitle);
-    setIsOrderModalOpen(true);
+    setIsQuoteModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsOrderModalOpen(false);
+    setIsQuoteModalOpen(false);
     setSelectedProduct(null);
   };
 
@@ -90,20 +107,51 @@ const Index = () => {
                 shortDescription={product.shortDescription}
                 fullDescription={product.fullDescription}
                 image={product.image}
-                price={product.price}
-                unit={product.unit}
-                onOrderNow={() => handleOrderNow(product.title)}
+                sizes={product.sizes}
+                onGetQuote={() => handleGetQuote(product.title)}
               />
             ))}
+          </div>
+        </section>
+
+        {/* Delivery Section */}
+        <section className="bg-gradient-card py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                We Deliver <span className="text-primary">Everywhere</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Professional delivery service across South Africa. Our fleet ensures your bricks arrive safely and on time.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
+              {deliveryImages.map((item) => (
+                <div key={item.id} className="bg-card rounded-lg overflow-hidden shadow-card hover:shadow-glow transition-all duration-300">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.caption}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.caption}</h3>
+                    <p className="text-primary font-medium">{item.slogan}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
 
       <Footer />
 
-      {/* Order Modal */}
+      {/* Quote Modal */}
       <OrderModal
-        isOpen={isOrderModalOpen}
+        isOpen={isQuoteModalOpen}
         onClose={handleCloseModal}
         productTitle={selectedProduct || undefined}
       />

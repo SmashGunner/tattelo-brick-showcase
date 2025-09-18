@@ -32,20 +32,29 @@ const HeroCarousel = () => {
             alt={`Tattelo Bricks Hero ${index + 1}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-hero" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
       ))}
 
       {/* Content Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center text-center z-10">
-        <div className="max-w-4xl mx-auto px-4 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 drop-shadow-lg">
-            Welcome to <span className="text-primary">Tattelo Bricks</span>
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/90 mb-8 max-w-2xl mx-auto drop-shadow-md">
-            Premium quality bricks for your construction projects. 
-            Built to last, crafted with precision.
-          </p>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+            <div className="text-center text-white z-10 px-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-2 animate-fade-in">
+                Welcome to <span className="text-primary-glow">Tattelo Bricks</span>
+              </h1>
+              <h2 className="text-lg md:text-xl mb-4 animate-fade-in text-primary-glow font-semibold">
+                Paving & Building Bricks
+              </h2>
+              <p className="text-xl md:text-2xl mb-8 animate-slide-up opacity-90">
+                Build a Better Tomorrow with Us
+              </p>
+              <div className="space-y-2 text-sm md:text-lg animate-slide-up">
+                <p>✓ Paving & Building Bricks</p>
+                <p>✓ Affordable & Transparent Pricing</p>
+                <p>✓ Quality Results That Exceed Your Expectations</p>
+              </div>
+            </div>
         </div>
       </div>
 

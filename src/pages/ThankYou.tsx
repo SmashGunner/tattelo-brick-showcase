@@ -18,12 +18,12 @@ const ThankYou = () => {
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-12 h-12 text-primary animate-glow-pulse" />
             </div>
-            <CardTitle className="text-3xl font-bold text-foreground mb-2">
-              Order Submitted!
-            </CardTitle>
-            <p className="text-muted-foreground text-lg">
-              Thank you for choosing Tattelo Bricks
-            </p>
+          <h1 className="text-4xl font-bold text-foreground mb-6 animate-fade-in">
+            Thank You for Your Quote Request!
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8 animate-slide-up">
+            We've received your quote request and will contact you shortly with a personalized quote and delivery options.
+          </p>
           </CardHeader>
 
           <CardContent className="text-center space-y-6">

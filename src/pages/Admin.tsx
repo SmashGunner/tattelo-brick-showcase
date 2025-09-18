@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Search, Package, Calendar, User, Phone, MapPin, CreditCard } from "lucide-react";
+import { Search, Package, Calendar, User, Phone, MapPin, CreditCard, Plus, Edit, Bell } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-interface Order {
+interface Enquiry {
   id: number;
   name: string;
   email: string;
@@ -21,29 +21,29 @@ interface Order {
 }
 
 const Admin = () => {
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
+  const [filteredEnquiries, setFilteredEnquiries] = useState<Enquiry[]>([]);
 
   useEffect(() => {
-    // Load orders from localStorage (in production, this would come from your database)
-    const savedOrders = JSON.parse(localStorage.getItem("orders") || "[]");
-    setOrders(savedOrders);
-    setFilteredOrders(savedOrders);
+    // Load enquiries from localStorage (in production, this would come from your database)
+    const savedEnquiries = JSON.parse(localStorage.getItem("orders") || "[]");
+    setEnquiries(savedEnquiries);
+    setFilteredEnquiries(savedEnquiries);
   }, []);
 
   useEffect(() => {
-    // Filter orders based on search term
-    const filtered = orders.filter(
-      (order) =>
-        order.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.phone.includes(searchTerm) ||
-        order.product.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        new Date(order.date).toLocaleDateString().includes(searchTerm)
+    // Filter enquiries based on search term
+    const filtered = enquiries.filter(
+      (enquiry) =>
+        enquiry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        enquiry.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        enquiry.phone.includes(searchTerm) ||
+        enquiry.product.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        new Date(enquiry.date).toLocaleDateString().includes(searchTerm)
     );
-    setFilteredOrders(filtered);
-  }, [searchTerm, orders]);
+    setFilteredEnquiries(filtered);
+  }, [searchTerm, enquiries]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -52,57 +52,70 @@ const Admin = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 animate-fade-in">
           <h1 className="text-3xl font-bold text-foreground mb-2">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Manage orders and view customer information</p>
+          <p className="text-muted-foreground">Manage quotes, enquiries and product inventory</p>
         </div>
 
         {/* Search and Stats */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
           <div className="lg:col-span-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
-                placeholder="Search orders by name, email, phone, product, or date..."
+                placeholder="Search enquiries by name, email, phone, product, or date..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-input"
               />
             </div>
           </div>
-          <Card className="bg-gradient-card">
+          
+          <Card className="bg-gradient-card hover:shadow-glow transition-all duration-300 cursor-pointer">
             <CardContent className="p-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{orders.length}</div>
-                <div className="text-sm text-muted-foreground">Total Orders</div>
+                <div className="flex items-center justify-center mb-2">
+                  <Bell className="w-5 h-5 text-primary mr-1" />
+                  <div className="text-2xl font-bold text-primary">{enquiries.length}</div>
+                </div>
+                <div className="text-sm text-muted-foreground">Quote Requests</div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-gradient-card hover:shadow-glow transition-all duration-300 cursor-pointer">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <Plus className="w-8 h-8 text-primary mx-auto mb-2" />
+                <div className="text-sm text-muted-foreground">Add New Item</div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Orders List */}
+        {/* Enquiries List */}
         <div className="space-y-4 animate-slide-up">
-          {filteredOrders.length === 0 ? (
+          {filteredEnquiries.length === 0 ? (
             <Card className="bg-gradient-card">
               <CardContent className="p-8 text-center">
                 <Package className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-foreground mb-2">No Orders Found</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-2">No Quote Requests Found</h3>
                 <p className="text-muted-foreground">
-                  {searchTerm ? "No orders match your search criteria." : "No orders have been placed yet."}
+                  {searchTerm ? "No quote requests match your search criteria." : "No quote requests have been submitted yet."}
                 </p>
               </CardContent>
             </Card>
           ) : (
-            filteredOrders.map((order) => (
-              <Card key={order.id} className="bg-gradient-card hover:shadow-glow transition-all duration-300">
+            filteredEnquiries.map((enquiry) => (
+              <Card key={enquiry.id} className="bg-gradient-card hover:shadow-glow transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg font-semibold">Order #{order.id}</CardTitle>
+                    <CardTitle className="text-lg font-semibold">Quote Request #{enquiry.id}</CardTitle>
                     <div className="flex items-center space-x-2">
                       <Badge variant="outline" className="text-primary border-primary">
-                        {order.status}
+                        {enquiry.status}
                       </Badge>
                       <div className="flex items-center text-sm text-muted-foreground">
                         <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(order.date).toLocaleDateString()}
+                        {new Date(enquiry.date).toLocaleDateString()}
                       </div>
                     </div>
                   </div>
@@ -117,11 +130,11 @@ const Admin = () => {
                         Customer
                       </h4>
                       <div className="space-y-1 text-sm">
-                        <div className="text-foreground font-medium">{order.name}</div>
-                        <div className="text-muted-foreground">{order.email}</div>
+                        <div className="text-foreground font-medium">{enquiry.name}</div>
+                        <div className="text-muted-foreground">{enquiry.email}</div>
                         <div className="text-muted-foreground flex items-center">
                           <Phone className="w-3 h-3 mr-1" />
-                          {order.phone}
+                          {enquiry.phone}
                         </div>
                       </div>
                     </div>
@@ -130,14 +143,14 @@ const Admin = () => {
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground flex items-center">
                         <Package className="w-4 h-4 mr-2 text-primary" />
-                        Product
+                        Product Inquiry
                       </h4>
                       <div className="space-y-1 text-sm">
-                        <div className="text-foreground font-medium">{order.product}</div>
-                        <div className="text-muted-foreground">Quantity: {order.quantity} units</div>
+                        <div className="text-foreground font-medium">{enquiry.product}</div>
+                        <div className="text-muted-foreground">Status: {enquiry.quantity}</div>
                         <div className="text-muted-foreground flex items-center">
                           <CreditCard className="w-3 h-3 mr-1" />
-                          {order.paymentMethod.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase())}
+                          {enquiry.paymentMethod}
                         </div>
                       </div>
                     </div>
@@ -146,15 +159,15 @@ const Admin = () => {
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground flex items-center">
                         <MapPin className="w-4 h-4 mr-2 text-primary" />
-                        Delivery
+                        Delivery Address
                       </h4>
                       <div className="text-sm text-muted-foreground">
-                        {order.address}
+                        {enquiry.address}
                       </div>
-                      {order.notes && (
+                      {enquiry.notes && (
                         <div className="text-sm">
                           <div className="text-foreground font-medium">Notes:</div>
-                          <div className="text-muted-foreground">{order.notes}</div>
+                          <div className="text-muted-foreground">{enquiry.notes}</div>
                         </div>
                       )}
                     </div>

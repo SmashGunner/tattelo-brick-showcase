@@ -8,12 +8,11 @@ interface ProductCardProps {
   shortDescription: string;
   fullDescription: string;
   image: string;
-  price: string;
-  unit: string;
-  onOrderNow: () => void;
+  sizes?: string[];
+  onGetQuote: () => void;
 }
 
-const ProductCard = ({ title, shortDescription, fullDescription, image, price, unit, onOrderNow }: ProductCardProps) => {
+const ProductCard = ({ title, shortDescription, fullDescription, image, sizes, onGetQuote }: ProductCardProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -28,10 +27,16 @@ const ProductCard = ({ title, shortDescription, fullDescription, image, price, u
       
       <CardHeader>
         <CardTitle className="text-xl font-bold text-foreground">{title}</CardTitle>
-        <div className="flex items-center justify-between mb-2">
-          <div className="text-2xl font-bold text-primary">{price}</div>
-          <div className="text-sm text-muted-foreground">{unit}</div>
-        </div>
+        {sizes && (
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="text-sm text-muted-foreground">Available sizes:</span>
+            {sizes.map((size, index) => (
+              <span key={index} className="text-sm bg-primary/10 text-primary px-2 py-1 rounded">
+                {size}
+              </span>
+            ))}
+          </div>
+        )}
         <CardDescription className="text-muted-foreground">
           {expanded ? fullDescription : shortDescription}
         </CardDescription>
@@ -58,12 +63,12 @@ const ProductCard = ({ title, shortDescription, fullDescription, image, price, u
         </Button>
 
         <Button
-          onClick={onOrderNow}
+          onClick={onGetQuote}
           className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
           size="lg"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
-          Order Now
+          Get Quote
         </Button>
       </CardContent>
     </Card>
