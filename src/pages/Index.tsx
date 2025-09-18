@@ -16,6 +16,8 @@ const products = [
     shortDescription: "High-quality red clay bricks perfect for residential construction.",
     fullDescription: "Our premium red clay bricks are manufactured using traditional methods combined with modern quality control. These bricks offer excellent thermal insulation, durability, and aesthetic appeal. Perfect for residential and commercial construction projects. Each brick is carefully crafted to ensure consistent size, strength, and color. Suitable for load-bearing walls, decorative facades, and landscape applications.",
     image: product1,
+    price: "$0.45",
+    unit: "per brick",
   },
   {
     id: 2,
@@ -23,6 +25,8 @@ const products = [
     shortDescription: "Heavy-duty concrete blocks designed for industrial applications.",
     fullDescription: "Our industrial concrete blocks are engineered for maximum strength and durability. Made with high-grade concrete and reinforced with steel fibers, these blocks can withstand extreme conditions and heavy loads. Ideal for commercial buildings, warehouses, retaining walls, and infrastructure projects. Features excellent fire resistance, weatherproofing, and sound insulation properties.",
     image: product2,
+    price: "$2.85",
+    unit: "per block",
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ const products = [
     shortDescription: "Specialized bricks for high-temperature applications and furnaces.",
     fullDescription: "Our fire-resistant refractory bricks are specially formulated to withstand temperatures up to 1800°C. Made from high-alumina clay and other refractory materials, these bricks are essential for furnaces, kilns, fireplaces, and industrial heating applications. They maintain structural integrity under extreme thermal stress and provide excellent thermal shock resistance.",
     image: product3,
+    price: "$4.25",
+    unit: "per brick",
   },
   {
     id: 4,
@@ -37,6 +43,8 @@ const products = [
     shortDescription: "Beautiful decorative bricks for architectural facades and design.",
     fullDescription: "Our decorative facing bricks combine functionality with aesthetic excellence. Available in various colors, textures, and finishes, these bricks are perfect for creating stunning architectural features. Each brick is meticulously crafted to provide consistent appearance while maintaining structural integrity. Ideal for facades, accent walls, garden features, and premium residential projects.",
     image: product4,
+    price: "$1.95",
+    unit: "per brick",
   },
 ];
 
@@ -82,6 +90,8 @@ const Index = () => {
                 shortDescription={product.shortDescription}
                 fullDescription={product.fullDescription}
                 image={product.image}
+                price={product.price}
+                unit={product.unit}
                 onOrderNow={() => handleOrderNow(product.title)}
               />
             ))}

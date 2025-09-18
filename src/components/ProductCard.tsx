@@ -8,10 +8,12 @@ interface ProductCardProps {
   shortDescription: string;
   fullDescription: string;
   image: string;
+  price: string;
+  unit: string;
   onOrderNow: () => void;
 }
 
-const ProductCard = ({ title, shortDescription, fullDescription, image, onOrderNow }: ProductCardProps) => {
+const ProductCard = ({ title, shortDescription, fullDescription, image, price, unit, onOrderNow }: ProductCardProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -26,6 +28,10 @@ const ProductCard = ({ title, shortDescription, fullDescription, image, onOrderN
       
       <CardHeader>
         <CardTitle className="text-xl font-bold text-foreground">{title}</CardTitle>
+        <div className="flex items-center justify-between mb-2">
+          <div className="text-2xl font-bold text-primary">{price}</div>
+          <div className="text-sm text-muted-foreground">{unit}</div>
+        </div>
         <CardDescription className="text-muted-foreground">
           {expanded ? fullDescription : shortDescription}
         </CardDescription>
