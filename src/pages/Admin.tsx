@@ -52,7 +52,7 @@ const Admin = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 animate-fade-in">
           <h1 className="text-3xl font-bold text-foreground mb-2">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Manage quotes, enquiries and product inventory</p>
+          <p className="text-muted-foreground">Manage quotes, enquiries and items we have</p>
         </div>
 
         {/* Search and Stats */}
@@ -85,7 +85,7 @@ const Admin = () => {
             <CardContent className="p-4">
               <div className="text-center">
                 <Plus className="w-8 h-8 text-primary mx-auto mb-2" />
-                <div className="text-sm text-muted-foreground">Add New Item</div>
+                <div className="text-sm text-muted-foreground">Add Item We Have</div>
               </div>
             </CardContent>
           </Card>

@@ -21,25 +21,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Contact Info - Desktop */}
-          <div className="hidden lg:flex items-center space-x-6 text-sm">
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span className="text-foreground">076 500 0714</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span className="text-foreground">079 724 5067</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-primary" />
-              <span className="text-foreground">tattelobussiness@gmail.com</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-foreground">47 Chris Di Villiers Street, Ermelo, 2350</span>
-            </div>
-          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -115,21 +96,6 @@ const Navbar = () => {
               <span>Login</span>
             </NavLink>
             
-            {/* Mobile Contact Info */}
-            <div className="px-3 py-2 space-y-2 text-xs text-muted-foreground border-t border-border mt-4">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-3 h-3" />
-                <span>076 500 0714 | 079 724 5067</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-3 h-3" />
-                <span>tattelobussiness@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-3 h-3" />
-                <span>47 Chris Di Villiers Street, Ermelo, 2350</span>
-              </div>
-            </div>
           </div>
         </div>
       )}
