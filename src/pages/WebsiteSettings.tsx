@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Save, Upload, Plus, Trash2, Edit2, Phone, Mail, MapPin, Image } from "lucide-react";
+import { Save, Upload, Plus, Trash2, Edit2, Phone, Mail, MapPin, Image, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const WebsiteSettings = () => {
+  const navigate = useNavigate();
   const [contactInfo, setContactInfo] = useState({
     phones: ["076 500 0714", "079 724 5067"],
     email: "tattelobussiness@gmail.com",
@@ -107,6 +109,14 @@ const WebsiteSettings = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 animate-fade-in">
+          <Button
+            onClick={() => navigate('/admin')}
+            variant="outline"
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Admin Dashboard
+          </Button>
           <h1 className="text-3xl font-bold text-foreground mb-2">Website Settings</h1>
           <p className="text-muted-foreground">Manage your website content and appearance</p>
         </div>
