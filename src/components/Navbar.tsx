@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Home, User, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Home, User, Settings as SettingsIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -12,25 +12,30 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Desktop Logo and Branding */}
           <div className="flex-shrink-0">
-            <div className="flex items-center space-x-3">
-              <img src={logo} alt="Tattelo Bricks Logo" className="w-12 h-12" />
+            <div className="flex items-center space-x-4">
+              <img 
+                src={logo} 
+                alt="TatteloBricks Logo" 
+                className="w-14 h-14"
+              />
               <div>
-                <h1 className="text-xl font-bold text-foreground">Tattelo Bricks</h1>
-                <p className="text-sm text-muted-foreground">Paving & Building Bricks</p>
+                <h1 className="text-xl font-bold text-primary">TatteloBricks</h1>
+                <p className="text-sm text-accent font-medium">Paving and Building Bricks</p>
+                <p className="text-xs text-muted-foreground italic">Build a Better Tomorrow with Us</p>
               </div>
             </div>
           </div>
 
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-primary bg-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    ? "text-primary-foreground bg-primary shadow-glow font-semibold"
+                    : "text-foreground hover:text-primary hover:bg-primary/10"
                 }`
               }
             >
@@ -40,15 +45,28 @@ const Navbar = () => {
             <NavLink
               to="/login"
               className={({ isActive }) =>
-                `flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-primary bg-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    ? "text-primary-foreground bg-primary shadow-glow font-semibold"
+                    : "text-foreground hover:text-primary hover:bg-primary/10"
                 }`
               }
             >
               <User className="w-4 h-4" />
-              <span>Login</span>
+              <span>Admin</span>
+            </NavLink>
+            <NavLink
+              to="/admin/settings"
+              className={({ isActive }) =>
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? "text-accent-foreground bg-accent shadow-glow font-semibold"
+                    : "text-foreground hover:text-accent hover:bg-accent/10"
+                }`
+              }
+            >
+              <SettingsIcon className="w-4 h-4" />
+              <span>Settings</span>
             </NavLink>
           </div>
 
@@ -70,10 +88,10 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-primary bg-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    ? "text-primary-foreground bg-primary font-semibold"
+                    : "text-foreground hover:text-primary hover:bg-primary/10"
                 }`
               }
               onClick={() => setIsOpen(false)}
@@ -84,16 +102,30 @@ const Navbar = () => {
             <NavLink
               to="/login"
               className={({ isActive }) =>
-                `flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-primary bg-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    ? "text-primary-foreground bg-primary font-semibold"
+                    : "text-foreground hover:text-primary hover:bg-primary/10"
                 }`
               }
               onClick={() => setIsOpen(false)}
             >
               <User className="w-4 h-4" />
-              <span>Login</span>
+              <span>Admin</span>
+            </NavLink>
+            <NavLink
+              to="/admin/settings"
+              className={({ isActive }) =>
+                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? "text-accent-foreground bg-accent font-semibold"
+                    : "text-foreground hover:text-accent hover:bg-accent/10"
+                }`
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              <SettingsIcon className="w-4 h-4" />
+              <span>Settings</span>
             </NavLink>
             
           </div>

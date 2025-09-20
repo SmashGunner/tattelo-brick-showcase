@@ -2,51 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tattelo Bricks Design System - Industrial Dark Theme
+/* Tattelo Bricks Design System - Professional Blue Theme
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* Dark industrial theme */
+    /* Professional blue theme */
     --background: 220 15% 8%;
-    --foreground: 32 25% 92%;
+    --foreground: 210 25% 92%;
 
     --card: 220 13% 12%;
-    --card-foreground: 32 25% 92%;
+    --card-foreground: 210 25% 92%;
 
     --popover: 220 13% 12%;
-    --popover-foreground: 32 25% 92%;
+    --popover-foreground: 210 25% 92%;
 
-    /* Brick-inspired primary colors */
-    --primary: 18 85% 55%;
-    --primary-foreground: 220 15% 8%;
+    /* Blue brick-inspired primary colors */
+    --primary: 217 85% 45%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 8% 20%;
-    --secondary-foreground: 32 25% 92%;
+    --secondary-foreground: 210 25% 92%;
 
     --muted: 220 8% 15%;
-    --muted-foreground: 32 15% 65%;
+    --muted-foreground: 210 15% 65%;
 
-    /* Copper/bronze accents */
-    --accent: 25 65% 45%;
+    /* Light blue accents */
+    --accent: 205 70% 55%;
     --accent-foreground: 220 15% 8%;
 
     --destructive: 0 75% 55%;
-    --destructive-foreground: 32 25% 92%;
+    --destructive-foreground: 210 25% 92%;
 
     --border: 220 8% 20%;
     --input: 220 8% 15%;
-    --ring: 18 85% 55%;
+    --ring: 217 85% 45%;
 
-    /* Construction theme gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(18 85% 55%), hsl(25 65% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8% / 0.8), hsl(220 13% 12% / 0.9));
-    --gradient-card: linear-gradient(145deg, hsl(220 13% 12%), hsl(220 8% 15%));
+    /* Blue professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 85% 45%), hsl(205 70% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8% / 0.8), hsl(217 85% 45% / 0.1));
+    --gradient-card: linear-gradient(145deg, hsl(220 13% 12%), hsl(217 30% 15%));
 
-    /* Industrial shadows */
+    /* Professional blue shadows */
     --shadow-industrial: 0 8px 32px hsl(220 15% 8% / 0.6);
-    --shadow-glow: 0 0 20px hsl(18 85% 55% / 0.3);
+    --shadow-glow: 0 0 20px hsl(217 85% 45% / 0.3);
     --shadow-card: 0 4px 16px hsl(220 15% 8% / 0.4);
 
     /* Smooth transitions */
