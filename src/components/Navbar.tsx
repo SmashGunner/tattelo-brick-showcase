@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Home, User, Settings as SettingsIcon } from "lucide-react";
+import { Menu, X, Home, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -55,19 +55,6 @@ const Navbar = () => {
               <User className="w-4 h-4" />
               <span>Admin</span>
             </NavLink>
-            <NavLink
-              to="/admin/settings"
-              className={({ isActive }) =>
-                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  isActive
-                    ? "text-accent-foreground bg-accent shadow-glow font-semibold"
-                    : "text-foreground hover:text-accent hover:bg-accent/10"
-                }`
-              }
-            >
-              <SettingsIcon className="w-4 h-4" />
-              <span>Settings</span>
-            </NavLink>
           </div>
 
           {/* Mobile menu button */}
@@ -112,20 +99,6 @@ const Navbar = () => {
             >
               <User className="w-4 h-4" />
               <span>Admin</span>
-            </NavLink>
-            <NavLink
-              to="/admin/settings"
-              className={({ isActive }) =>
-                `flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  isActive
-                    ? "text-accent-foreground bg-accent font-semibold"
-                    : "text-foreground hover:text-accent hover:bg-accent/10"
-                }`
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              <SettingsIcon className="w-4 h-4" />
-              <span>Settings</span>
             </NavLink>
             
           </div>
